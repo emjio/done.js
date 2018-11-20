@@ -1,0 +1,79 @@
+@charset 'UTF-8';
+.Done_container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    .Done_cover {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: -webkit-transform;
+        -o-transition-property: transform;
+        transition-property: transform;
+        transition-property: transform, -webkit-transform;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        transition-duration: 0ms;
+        transition: all 1s;
+        .Done_item {
+            -webkit-flex-shrink: 0;
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            -o-transition-property: transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+
+        }
+    }
+    .Done_bar {
+        position: absolute;
+        text-align: center;
+        -webkit-transition: .3s opacity;
+        -o-transition: .3s opacity;
+        transition: .3s opacity;
+        z-index: 10;
+        bottom:10px;
+        text-align: center;
+        width: 100%;
+        .Down_bullets{
+            opacity: 0.3;
+            margin:  0 5px;
+            display: inline-block;
+                width:  8px;
+                height: 8px;
+                border-radius: 100%;
+                background: #fff;
+                &.current{
+                    opacity: 1;
+                }
+        }
+
+
+    }
+    .Down_bullets_clickable{
+        .Down_bullets{
+            cursor: pointer;
+        }
+        }
+}
+
+.Down-container-horizontal {
+    >.Down-bullets {
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+    }
+}

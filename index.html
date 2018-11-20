@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>使用面向对象封装轮播图插件</title>
+    <link rel="stylesheet" href="css/Done.css">
+    <link rel="stylesheet" href="css/reset.css">
+</head>
+
+<body>
+    <div class="Done_container ">
+        <div class="Done_cover">
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+        </div>
+        <div class="Done_bar"></div>
+        <!-- Done_bar 可选使用-->
+    </div>
+    <div class="Done_container done2">
+        <div class="Done_cover">
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+            <div class="Done_item">
+                <img src="img/mr.jpg" alt="" class="img-responsive">
+            </div>
+        </div>
+        <div class="Done_bar"></div>
+        <!-- Done_bar 可选使用-->
+    </div>
+    <script src="js/done.js"></script>
+    <script>
+        var done1 = createdone('.Done_container', {
+            name: 'demo',
+            duration: 5000,
+            autoplay: true,
+            barclickable: true,
+            spacebetwen: 30,
+        });
+       var done2 = createdone('.done2');
+    </script>
+</body>
+
+</html>

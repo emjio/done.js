@@ -1,0 +1,179 @@
+	/* http://meyerweb.com/eric/tools/css/reset/ */
+	/* v1.0 | 20180826 */
+
+	html, body, div, span, applet, object, iframe,
+	 blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, font, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		outline: 0;
+		font-size: 100%;
+		vertical-align: baseline;
+		background: transparent;
+	}
+	a{
+		text-decoration: none;
+	}
+	body {
+		line-height: 1;
+	}
+	ol, ul {
+		list-style: none;
+	}
+	blockquote, q {
+		quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none;
+	}
+
+	/* remember to define focus styles! */
+	:focus {
+		outline: 0;
+	}
+
+	/* remember to highlight inserts somehow! */
+	ins {
+		text-decoration: none;
+	}
+	del {
+		text-decoration: line-through;
+	}
+
+	/* tables still need 'cellspacing="0"' in the markup */
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	/*清除默认属性*/
+	 .oneline {
+		text-overflow:ellipsis;
+		white-space: nowrap;
+		position: relative;
+		overflow: hidden;
+		
+	} /* 超出显示省略号 */
+	 .severalline{
+		overflow : hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		position: relative;
+		/* 多行超出显示省略号 */
+	} 
+	.severalline::after{
+		color: black;
+	content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
+	background: -webkit-linear-gradient(left, transparent, #fff 55%);
+	background: -moz-linear-gradient(right, transparent, #fff 55%);
+	background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(55%, #fff));
+	background: -moz-linear-gradient(left, transparent, #fff 55%);
+	background: linear-gradient(to right, transparent, #fff 55%);
+
+	}
+/* 	兼容部分设备 */
+	.content{
+		margin: 0 auto;
+		max-width: 1200px;
+	}
+	.clearfix:after{
+		clear: both;
+		display: table;
+		content: ""
+	}
+	.img-ctrl{
+		text-align: center;
+	}
+	.img-responsive {
+	    display: inline-block;
+	    height: auto;
+	    max-width: 100%;
+	    vertical-align: middle;
+	}
+	/*图片处理样式*/
+	.content-l{
+		float: left;
+	}
+	.content-r{
+		float: right;
+	}
+	/*浮动样式*/
+
+	.flex-content{
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-pack: distribute;
+		-webkit-box-pack: justify;
+		   -moz-box-pack: justify;
+		        justify-content: space-between;
+	}
+	.flex-column{
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+		 -webkit-box-orient:vertical;
+		 -webkit-box-direction:normal;
+		    -moz-box-orient:vertical;
+		    -moz-box-direction:normal;
+		     -ms-flex-direction:column;
+		         flex-direction:column;/*上下布局*/
+	}
+	/* flex样式 */
+	.flex-center{
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+           -moz-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+           -moz-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+}
+	.shade{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		z-index: 9999;
+	}
+
+	.tip{
+		position: absolute;
+		-webkit-transform: translate(-50%,-50%);
+		   -moz-transform: translate(-50%,-50%);
+		    -ms-transform: translate(-50%,-50%);
+		        transform: translate(-50%,-50%);
+		top: 50%;
+		left: 50%;	
+	}
+	.line{
+		height: 4px;
+		width: 70px;
+		margin: 0 auto;
+		background: #fff;
+	}
+	.open{
+	right:0!important;
+}
+.position{
+	position: relative;
+}
+.hide{
+		display: none;
+	}
