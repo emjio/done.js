@@ -1,7 +1,7 @@
 /*
  * downchange v1.0
  * @author chenmonster
- * @github  
+ * @github  https://github.com/emjio
  */
 (function(el, props) {
     "use strict";
