@@ -27,6 +27,10 @@
                 <img src="img/mr.jpg" alt="" class="img-responsive">
             </div>
         </div>
+
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <!--swiper-button 左右箭头可选使用  -->
         <div class="Done_bar"></div>
         <!-- Done_bar 可选使用-->
     </div>
@@ -47,15 +51,20 @@
     </div>
     <script src="js/done.js"></script>
     <script>
+        
         var done1 = createdone('.Done_container', {
             name: 'demo',
-            duration: 5000,
+            duration: 2000,
             autoplay: true,
             barclickable: true,
             spacebetwen: 30,
+            initposition:2,
+            loop:true,
         });
-       var done2 = createdone('.done2');
+       //var done2 = createdone();
+
     </script>
 </body>
+
 
 </html>
