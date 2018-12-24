@@ -45,32 +45,10 @@
         spacebetwen: 0,     // 每一个图片的间距
         initposition:0,      // 初始位置 选择从第几个开始轮播
         loop:false,         //是否循环滚动
-
     };
-    // function autoPlay(){
-    //     this.prototype.init.cal('Done',[]);
-    //     console.log(this.prototype.init)
-    // }
-    // autoPlay.prototype = {
-    //     constructor:autoPlay,
-    //     init:function(){
-    //         _autoPlay();
-    //     }
 
-    // }
     function Done(el, props) {
         props = props || defaultprops;
-        this.name = props.name || '匿名';
-        this.el = document.querySelector(el);
-        this.bar = this.el.querySelector('.Done_bar') || 'null';
-        this.item = this.el.querySelectorAll('.Done_item');
-        this.item_width = this.el.offsetWidth;
-        this.item_cover = this.el.querySelector('.Done_cover');
-        this.timer = null;
-        this.lastime = 0;
-        this.nextbtn = this.el.querySelector('.swiper-button-next');
-        this.prevbtn = this.el.querySelector('.swiper-button-prev');
-
         for (var k in defaultprops) {
             if (!props[k]) {
                 props[k] = defaultprops[k];
@@ -80,10 +58,22 @@
         for (var k in props) {
             this[k] = props[k];
         }
+
         /**
         *混入继承  判断传入的opts是否有默认参数中的值，如果默认参数值不存在opts中
         *就把默认参数加进opts中,这样就不会把默认参数修改了
         */
+
+        this.name = props.name || '匿名';
+        this.el = document.querySelector(el);
+        this.bar = this.el.querySelector('.Done_bar') || 'null';
+        this.item = this.el.querySelectorAll('.Done_item');
+        this.item_width = this.el.offsetWidth;
+        this.item_cover = this.el.querySelector('.Done_cover');
+        this.timer = null;
+        this.lastime = this.initposition;
+        this.nextbtn = this.el.querySelector('.swiper-button-next');
+        this.prevbtn = this.el.querySelector('.swiper-button-prev');
         this.init();
     }
     Done.prototype = {
@@ -163,10 +153,10 @@
             })
             }
             addEvents(this.prevbtn,'click',function(){
-                self._Play(self.initposition+1);
+                console.log(1)
             })
             addEvents(this.nextbtn,'click',function(){
-                self._Play(self.initposition-1);
+                console.log(1)
             })
 
         },
@@ -184,15 +174,29 @@
          _Play:function(a){
                 var self = this;
                  //console.log(a)
-                 self.initposition = a-1||self.initposition;   
-                    var currentposition = self.initposition*-(self.item_width + self.spacebetwen) //
-                    if (self.initposition == self.item.length - 1) {
-                        self.initposition = 0;
-                        currentposition = 0;
-                    } else {
-                        self.initposition++;
-                        currentposition = parseInt(currentposition - self.item_width - self.spacebetwen);
-                    }
+                 self.lastime = a-1||self.lastime;   
+                    var currentposition = self.lastime*-(self.item_width + self.spacebetwen) //
+                    if(self.loop){
+                        if (self.lastime == self.item.length - 1) {
+                                self.lastime = 0;
+                                currentposition = 0;
+                        } else  {
+                            self.lastime++;
+                            currentposition = parseInt(currentposition - self.item_width - self.spacebetwen);
+                        }
+                             }else {
+                                
+                                if (self.lastime == self.item.length - 1) {
+                                self.lastime = 0;
+                                currentposition = 0;
+                                }else if(self.lastime==0){
+                                    
+                                } 
+                                else {
+                                    self.lastime++;
+                                    currentposition = parseInt(currentposition - self.item_width - self.spacebetwen);
+                                }
+                              }
 
                     for(let i = 0; i< self.item.length;i++){
                         self.bar.querySelectorAll('span')[i].classList.remove('current');
@@ -201,20 +205,20 @@
                          self.item[i].classList.remove('previtem');
                     }
 
-                    switch (self.initposition) {
+                    switch (self.lastime) {
                         case 0:
-                            self.item[self.initposition+1].classList.add('nextitem');
+                            self.item[self.lastime+1].classList.add('nextitem');
                             break;
                         case self.item.length-1:
-                            self.item[self.initposition-1].classList.add('previtem');
+                            self.item[self.lastime-1].classList.add('previtem');
                             break;  
                         default:
-                            self.item[self.initposition+1].classList.add('nextitem');   
-                            self.item[self.initposition].classList.add('nowitem');
-                            self.item[self.initposition-1].classList.add('previtem');;
+                            self.item[self.lastime+1].classList.add('nextitem');   
+                            self.item[self.lastime].classList.add('nowitem');
+                            self.item[self.lastime-1].classList.add('previtem');;
                             break;
                     }
-                    self.bar.querySelectorAll('span')[self.initposition].classList.add('current')
+                    self.bar.querySelectorAll('span')[self.lastime].classList.add('current')
                     self.item_cover.style.transform = `translate3d(${currentposition}px, 0px, 0px)`;
               },      
             _Pause:function(){
