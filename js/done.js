@@ -13,9 +13,11 @@
      * @param {Object} items_length // 轮播的元素长度 自动获取
      * @param {Object} duration 分页器(可选) //
      * @param {Object} autoplay 是否自动播放(可选)	
-     * @param {Object} 播放 显示时长(可选)			
+     * @param {Object}  loop 是否循环播放 (可选)
+     * @param {Object} 			
      * 使用方法 参考demo.html
      */
+  
     var addEvents = (function() {
         //能力检测
        // console.log(1)
@@ -45,6 +47,7 @@
         spacebetwen: 0,     // 每一个图片的间距
         initposition:0,      // 初始位置 选择从第几个开始轮播
         loop:false,         //是否循环滚动
+        mouseoverstop:false //鼠标移入是否暂停
     };
 
     function Done(el, props) {
@@ -72,8 +75,8 @@
         this.item_cover = this.el.querySelector('.Done_cover');
         this.timer = null;
         this.lastime = this.initposition;
-        this.nextbtn = this.el.querySelector('.swiper-button-next');
-        this.prevbtn = this.el.querySelector('.swiper-button-prev');
+        this.nextbtn = this.el.querySelector('.Done-button-next');
+        this.prevbtn = this.el.querySelector('.Done-button-prev');
         this.init();
     }
     Done.prototype = {
@@ -143,7 +146,7 @@
                     })
                 }
             }
-
+            if(self.mouseoverstop){
             for (let i=0;i<self.item.length - 1; i++) {
                 addEvents(self.item[i],'mouseover',function(){
                 self._Pause();
@@ -152,12 +155,14 @@
                 self._autoPlay();
             })
             }
-            addEvents(this.prevbtn,'click',function(){
-                console.log(1)
-            })
-            addEvents(this.nextbtn,'click',function(){
-                console.log(1)
-            })
+         }
+
+                addEvents(self.prevbtn,'click',function(){
+                    console.log(1)
+                })
+                addEvents(self.nextbtn,'click',function(){
+                    console.log(1)
+                })
 
         },
         /*
@@ -174,7 +179,8 @@
          _Play:function(a){
                 var self = this;
                  //console.log(a)
-                 self.lastime = a-1||self.lastime;   
+                 self.lastime = a?a:self.lastime;   
+                 console.log(self.lastime)
                     var currentposition = self.lastime*-(self.item_width + self.spacebetwen) //
                     if(self.loop){
                         if (self.lastime == self.item.length - 1) {
