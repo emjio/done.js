@@ -14,7 +14,7 @@ webpack+es5/es6+scss
 
 
 ```
-git clone https://github.com/bailicangdu/vue2-elm.git  
+git clone https://github.com/emjio/done.js.git 
 
 
 
